@@ -3,6 +3,12 @@
 class Movie {}
 
 
+// Instanze
+
+$matrix = new Movie();
+$titanic = new Movie();
+$inception = new Movie();
+
 ?>
 
 <!DOCTYPE html>
