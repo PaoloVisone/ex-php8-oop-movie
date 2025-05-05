@@ -19,7 +19,7 @@ class Movie
     public $regista;
     public $durata;
     public $data;
-    public $genere;
+    public $generi;
 
     // Metodo
     function isOld()
@@ -31,13 +31,13 @@ class Movie
     }
 
     // Costruttore
-    function __construct($nome, $regista, $durata, $data, $genere)
+    function __construct($nome, $regista, $durata, $data, $generi)
     {
         $this->nome = $nome;
         $this->regista = $regista;
         $this->durata = $durata;
         $this->data = $data;
-        $this->genere = $genere;
+        $this->generi = $generi;
     }
 }
 
@@ -45,11 +45,13 @@ class Movie
 $action = new Genre("Action");
 $romance = new Genre("Romance");
 $sciFi = new Genre("Sci-Fi");
+$comedy = new Genre("Comedy");
+$drama = new Genre("Drama");
 
 // Istanza dei film
-$matrix = new Movie("Matrix", "Lana Wachowski, Lilly Wachowski", "2h 16m", 1999, $sciFi);
-$titanic = new Movie("Titanic", "James Cameron", "3h 14m", 1998, $romance);
-$inception = new Movie("Inception", "Christopher Nolan", "2h 28m", 2010, $action);
+$matrix = new Movie("Matrix", "Lana Wachowski, Lilly Wachowski", "2h 16m", 1999, [$sciFi, $action]);
+$titanic = new Movie("Titanic", "James Cameron", "3h 14m", 1998, [$romance, $drama]);
+$inception = new Movie("Inception", "Christopher Nolan", "2h 28m", 2010, [$action, $sciFi]);
 
 var_dump($matrix);
 var_dump($titanic);
