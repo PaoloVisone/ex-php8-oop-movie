@@ -1,5 +1,10 @@
 <?php
 
+// Importo il Tait
+require_once("./trait/hasRating.php");
+
+
+
 // Classe Genre
 class Genre
 {
@@ -15,6 +20,7 @@ class Genre
 // Classe Movie
 class Movie
 {
+    use HasRating;
     public $nome;
     public $regista;
     public $durata;
@@ -52,6 +58,11 @@ $drama = new Genre("Drama");
 $matrix = new Movie("Matrix", "Lana Wachowski, Lilly Wachowski", "2h 16m", 1999, [$sciFi, $action]);
 $titanic = new Movie("Titanic", "James Cameron", "3h 14m", 1998, [$romance, $drama]);
 $inception = new Movie("Inception", "Christopher Nolan", "2h 28m", 2010, [$action, $sciFi]);
+
+// Rating per i film
+$matrix->setRating(9);
+$titanic->setRating(8.5);
+$inception->setRating(9.2);
 
 var_dump($matrix);
 var_dump($titanic);
