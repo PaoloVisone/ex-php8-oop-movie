@@ -3,73 +3,14 @@
 // Importo il Tait
 require_once("./trait/hasRating.php");
 
+// Importo il genere
+require_once("./models/genre.php");
 
+// Importo i film
+require_once("./models/movie.php");
 
-// Classe Genre
-class Genre
-{
-    public $name;
-
-    // Costruttore
-    function __construct($name)
-    {
-        $this->name = $name;
-    }
-}
-
-// Classe Movie
-class Movie
-{
-    use HasRating;
-    public $nome;
-    public $regista;
-    public $durata;
-    public $data;
-    public $generi;
-
-    // Metodo
-    function isOld()
-    {
-        if ($this->data < 2000) {
-            return "Il film '{$this->nome}' diretto da {$this->regista}, della durata di {$this->durata}, è uscito prima del 2000";
-        }
-        return null;
-    }
-
-    // Costruttore
-    function __construct($nome, $regista, $durata, $data, $generi)
-    {
-        $this->nome = $nome;
-        $this->regista = $regista;
-        $this->durata = $durata;
-        $this->data = $data;
-        $this->generi = $generi;
-    }
-}
-
-// Istanza dei generi
-$action = new Genre("Action");
-$romance = new Genre("Romance");
-$sciFi = new Genre("Sci-Fi");
-$comedy = new Genre("Comedy");
-$drama = new Genre("Drama");
-
-// Istanza dei film
-$matrix = new Movie("Matrix", "Lana Wachowski, Lilly Wachowski", "2h 16m", 1999, [$sciFi, $action]);
-$titanic = new Movie("Titanic", "James Cameron", "3h 14m", 1998, [$romance, $drama]);
-$inception = new Movie("Inception", "Christopher Nolan", "2h 28m", 2010, [$action, $sciFi]);
-
-// Rating per i film
-$matrix->setRating(9);
-$titanic->setRating(8.5);
-$inception->setRating(9.2);
-
-var_dump($matrix);
-var_dump($titanic);
-var_dump($inception);
-var_dump($matrix->isOld());
-var_dump($titanic->isOld());
-var_dump($inception->isOld());
+// importo il db
+require_once("./models/db.php");
 
 ?>
 
@@ -79,8 +20,38 @@ var_dump($inception->isOld());
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Movies</title>
 </head>
+<div class="content">
+    <div class="title">
+        <h1>MOVIES</h1>
+    </div>
+
+    <div class="movie-card">
+        <?php
+
+        foreach ($movies as $movie) {
+            // Ricavo generi 
+            $generiNomi = array_map(fn($genere) => $genere->name, $movie->generi);
+            $generiString = implode(", ", $generiNomi);
+
+            echo "<div class='card'>
+                      <div class='card-film'>  
+                         <h2>{$movie->nome}</h2>
+                         <p>Regista: {$movie->regista}</p>
+                         <p>Durata: {$movie->durata}</p>
+                         <p>Genere: {$generiString}</p>
+                         <p>Anno: {$movie->data}</p>
+                         <h3>{$movie->yearsSinceRelease()}</h3>
+                         <span>Rating: <strong>{$movie->getRating()}</strong></span>
+                      </div>
+                   </div>";
+        }
+
+        ?>
+    </div>
+</div>
 
 <body>
 
