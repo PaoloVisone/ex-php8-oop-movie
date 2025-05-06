@@ -1,0 +1,78 @@
+/* Generale */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #FF4500;
+    margin: 20px 0;
+    font-size: 3rem;
+}
+
+/* Contenitore */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Card */
+.movie-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: #FFF8DC;
+    border: 2px solid #FF4500;
+    border-radius: 10px;
+    width: 400px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-film h2 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-film p {
+    color: #333;
+    font-size: 1rem;
+    margin: 10px 0;
+    border-bottom: 1px solid #333;
+    width: 100%;
+}
+
+.card-film {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+span {
+    font-weight: bold;
+}
+
+strong {
+    border: 2px solid black;
+    border-radius: 999px;
+    padding: 10px 15px;
+    color: #FF4500;
+
+
+}
