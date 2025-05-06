@@ -13,9 +13,9 @@ $inception->setRating(9.2);
 // var_dump($matrix);
 // var_dump($titanic);
 // var_dump($inception);
-// var_dump($matrix->isOld());
-// var_dump($titanic->isOld());
-// var_dump($inception->isOld());
+// var_dump($matrix->yearsSinceRelease());
+// var_dump($titanic->yearsSinceRelease());
+// var_dump($inception->yearsSinceRelease());
 
 // Array dei film
 $movies = [$matrix, $titanic, $inception];
